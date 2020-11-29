@@ -2,11 +2,22 @@
 
 MicroBit uBit;
 
-int 
 main()
 {
     uBit.init();
 
     while(1)
-        uBit.display.scroll("HELLO WORLD!");
+    {
+        if (uBit.buttonA.isPressed())
+            uBit.display.image.setPixelValue(0,0,255);
+        else
+            uBit.display.image.setPixelValue(0,0,0);
+
+        if (uBit.buttonB.isPressed())
+            uBit.display.image.setPixelValue(4,0,255);
+        else
+            uBit.display.image.setPixelValue(4,0,0);
+
+        uBit.sleep(100);
+    }
 }
